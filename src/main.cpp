@@ -1,7 +1,5 @@
 #include"CompVis.h"
-
 #include<iostream>
-
 
 
 int main(int argc, char *argv[])
@@ -13,7 +11,7 @@ int main(int argc, char *argv[])
     }
 
 
-	CompVis myObj("/home/ae/repo/ComputerVisionCuda/inputImageDir/*.jpg",512,512,0);
+	CompVis myObj(argv[1],512,512,0);
 
 	myObj.init();
 
