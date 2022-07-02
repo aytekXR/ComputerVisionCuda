@@ -1,12 +1,3 @@
-/*
-#include <iostream>
-
-int main(int, char**) {
-    std::cout << "Hello, world!\n";
-}
-
-*/
-
 #include"CompVis.h"
 
 #include<iostream>
