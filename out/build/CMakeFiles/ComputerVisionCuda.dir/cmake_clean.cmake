@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.o"
-  "CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.o.d"
-  "CMakeFiles/ComputerVisionCuda.dir/main.cpp.o"
-  "CMakeFiles/ComputerVisionCuda.dir/main.cpp.o.d"
+  "CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.o"
+  "CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.o.d"
+  "CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.o"
+  "CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.o.d"
   "ComputerVisionCuda"
   "ComputerVisionCuda.pdb"
 )

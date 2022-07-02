@@ -523,53 +523,53 @@ ComputerVisionCuda/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ComputerVisionCuda.dir/build.make CMakeFiles/ComputerVisionCuda.dir/build
 .PHONY : ComputerVisionCuda/fast
 
-CompVis.o: CompVis.cpp.o
-.PHONY : CompVis.o
+src/CompVis.o: src/CompVis.cpp.o
+.PHONY : src/CompVis.o
 
 # target to build an object file
-CompVis.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ComputerVisionCuda.dir/build.make CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.o
-.PHONY : CompVis.cpp.o
+src/CompVis.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ComputerVisionCuda.dir/build.make CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.o
+.PHONY : src/CompVis.cpp.o
 
-CompVis.i: CompVis.cpp.i
-.PHONY : CompVis.i
+src/CompVis.i: src/CompVis.cpp.i
+.PHONY : src/CompVis.i
 
 # target to preprocess a source file
-CompVis.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ComputerVisionCuda.dir/build.make CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.i
-.PHONY : CompVis.cpp.i
+src/CompVis.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ComputerVisionCuda.dir/build.make CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.i
+.PHONY : src/CompVis.cpp.i
 
-CompVis.s: CompVis.cpp.s
-.PHONY : CompVis.s
+src/CompVis.s: src/CompVis.cpp.s
+.PHONY : src/CompVis.s
 
 # target to generate assembly for a file
-CompVis.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ComputerVisionCuda.dir/build.make CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.s
-.PHONY : CompVis.cpp.s
+src/CompVis.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ComputerVisionCuda.dir/build.make CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.s
+.PHONY : src/CompVis.cpp.s
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ComputerVisionCuda.dir/build.make CMakeFiles/ComputerVisionCuda.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ComputerVisionCuda.dir/build.make CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ComputerVisionCuda.dir/build.make CMakeFiles/ComputerVisionCuda.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ComputerVisionCuda.dir/build.make CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ComputerVisionCuda.dir/build.make CMakeFiles/ComputerVisionCuda.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ComputerVisionCuda.dir/build.make CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -611,12 +611,12 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... ComputerVisionCuda"
-	@echo "... CompVis.o"
-	@echo "... CompVis.i"
-	@echo "... CompVis.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/CompVis.o"
+	@echo "... src/CompVis.i"
+	@echo "... src/CompVis.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

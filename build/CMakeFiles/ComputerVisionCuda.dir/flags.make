@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /usr/local/include/opencv4
+CXX_INCLUDES = -I/home/ae/repo/ComputerVisionCuda/kernels -I/home/ae/repo/ComputerVisionCuda/utility -isystem /usr/local/include/opencv4
 
 CXX_FLAGS = -g
 

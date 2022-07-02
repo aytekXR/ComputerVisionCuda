@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/ae/repo/ComputerVisionCuda/CompVis.cpp" "CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.o" "gcc" "CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.o.d"
-  "/home/ae/repo/ComputerVisionCuda/main.cpp" "CMakeFiles/ComputerVisionCuda.dir/main.cpp.o" "gcc" "CMakeFiles/ComputerVisionCuda.dir/main.cpp.o.d"
+  "/home/ae/repo/ComputerVisionCuda/src/CompVis.cpp" "CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.o" "gcc" "CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.o.d"
+  "/home/ae/repo/ComputerVisionCuda/src/main.cpp" "CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.o" "gcc" "CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links.

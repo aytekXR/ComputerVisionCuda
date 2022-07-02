@@ -69,44 +69,44 @@ include CMakeFiles/ComputerVisionCuda.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/ComputerVisionCuda.dir/flags.make
 
-CMakeFiles/ComputerVisionCuda.dir/main.cpp.o: CMakeFiles/ComputerVisionCuda.dir/flags.make
-CMakeFiles/ComputerVisionCuda.dir/main.cpp.o: ../main.cpp
-CMakeFiles/ComputerVisionCuda.dir/main.cpp.o: CMakeFiles/ComputerVisionCuda.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ae/repo/ComputerVisionCuda/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ComputerVisionCuda.dir/main.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ComputerVisionCuda.dir/main.cpp.o -MF CMakeFiles/ComputerVisionCuda.dir/main.cpp.o.d -o CMakeFiles/ComputerVisionCuda.dir/main.cpp.o -c /home/ae/repo/ComputerVisionCuda/main.cpp
+CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.o: CMakeFiles/ComputerVisionCuda.dir/flags.make
+CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.o: ../src/main.cpp
+CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.o: CMakeFiles/ComputerVisionCuda.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ae/repo/ComputerVisionCuda/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.o -MF CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.o.d -o CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.o -c /home/ae/repo/ComputerVisionCuda/src/main.cpp
 
-CMakeFiles/ComputerVisionCuda.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputerVisionCuda.dir/main.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ae/repo/ComputerVisionCuda/main.cpp > CMakeFiles/ComputerVisionCuda.dir/main.cpp.i
+CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ae/repo/ComputerVisionCuda/src/main.cpp > CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.i
 
-CMakeFiles/ComputerVisionCuda.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputerVisionCuda.dir/main.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ae/repo/ComputerVisionCuda/main.cpp -o CMakeFiles/ComputerVisionCuda.dir/main.cpp.s
+CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ae/repo/ComputerVisionCuda/src/main.cpp -o CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.s
 
-CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.o: CMakeFiles/ComputerVisionCuda.dir/flags.make
-CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.o: ../CompVis.cpp
-CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.o: CMakeFiles/ComputerVisionCuda.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ae/repo/ComputerVisionCuda/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.o"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.o -MF CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.o.d -o CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.o -c /home/ae/repo/ComputerVisionCuda/CompVis.cpp
+CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.o: CMakeFiles/ComputerVisionCuda.dir/flags.make
+CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.o: ../src/CompVis.cpp
+CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.o: CMakeFiles/ComputerVisionCuda.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ae/repo/ComputerVisionCuda/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.o"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.o -MF CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.o.d -o CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.o -c /home/ae/repo/ComputerVisionCuda/src/CompVis.cpp
 
-CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.i"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ae/repo/ComputerVisionCuda/CompVis.cpp > CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.i
+CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.i"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ae/repo/ComputerVisionCuda/src/CompVis.cpp > CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.i
 
-CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.s"
-	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ae/repo/ComputerVisionCuda/CompVis.cpp -o CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.s
+CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.s"
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ae/repo/ComputerVisionCuda/src/CompVis.cpp -o CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.s
 
 # Object files for target ComputerVisionCuda
 ComputerVisionCuda_OBJECTS = \
-"CMakeFiles/ComputerVisionCuda.dir/main.cpp.o" \
-"CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.o"
+"CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.o" \
+"CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.o"
 
 # External object files for target ComputerVisionCuda
 ComputerVisionCuda_EXTERNAL_OBJECTS =
 
-ComputerVisionCuda: CMakeFiles/ComputerVisionCuda.dir/main.cpp.o
-ComputerVisionCuda: CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.o
+ComputerVisionCuda: CMakeFiles/ComputerVisionCuda.dir/src/main.cpp.o
+ComputerVisionCuda: CMakeFiles/ComputerVisionCuda.dir/src/CompVis.cpp.o
 ComputerVisionCuda: CMakeFiles/ComputerVisionCuda.dir/build.make
 ComputerVisionCuda: /usr/local/lib/libopencv_gapi.so.4.6.0
 ComputerVisionCuda: /usr/local/lib/libopencv_stitching.so.4.6.0

@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 {
     if (argc <= 1)
     {
-        std::cerr << "Give image directory as input to the program!\neg:\n./binary.exe /home/ae/repo/ComputerVisionCuda/inputImageDir/*.jpg!" << std::endl;
+        std::cerr << "Give image directory as input to the program!\neg:\n./binary.exe /home/ae/repo/ComputerVisionCuda/inputImageDir/" << std::endl;
         return -1;
     }
 
