@@ -21,7 +21,7 @@ void CompVis::init()
 	}
 #endif
 
-} 
+}
 
 std::vector<cv::Mat_<float>> CompVis::readAndPreprocess()
 {
@@ -50,8 +50,7 @@ std::vector<cv::Mat_<float>> CompVis::readAndPreprocess()
 void CompVis::addKernel(std::vector<float> singlekernel)
 {
     try {
-        int tmpFilterSize = m_kernelSize[0] * m_kernelSize[1];
-        if (singlekernel.size() == tmpFilterSize) {
+        if (singlekernel.size() == m_kernelSize[0]* m_kernelSize[1]) {
             m_kernelListW.emplace_back(singlekernel);
 #if DebugMod
             std::cout << "Kernel Added to the member array!" << std::endl;
@@ -94,8 +93,11 @@ cv::Mat_<float> CompVis::singleImageSingleKernelConv(const cv::Mat_<float>& src,
     return convOut.clone();
 }
 
+//std::vector<std::vector<cv::Mat_<float>>> CompVis::convolveLists(std::vector<std::vector<float>>& kernelListW)
 void CompVis::convolveLists(std::vector<std::vector<float>>& kernelListW)
 {
+    //m_batchListYwantedForm.reserve(m_numofImages);
+    //m_batchListYusefullForm.reserve(m_numofImages);
 
 #pragma omp parallel for num_threads(NUM_OF_THREAT)
     for (int imgIndex = 0; imgIndex < m_numofImages; imgIndex++) { //for each image in list X, use openmp
@@ -125,145 +127,32 @@ void CompVis::convolveMemberLists()
 }
 
 
-std::vector<double> CompVis::singleImageMeanVariance(const cv::Mat_<float>& src)
+cv::Mat_<float> CompVis::singleImageMeanVariance(const cv::Mat_<float>& src)
 {
-    std::vector<double> meanVar;
     double sum = std::accumulate(src.begin(), src.end(), 0.0);
     double mean = sum / (src.rows*src.cols);
 
     double sq_sum = std::inner_product(src.begin(), src.end(), src.begin(), 0.0);
     double var =   (sq_sum / (src.rows * src.cols) - mean * mean);
-    
-    meanVar.push_back(mean);
-    meanVar.push_back(sq_sum);
-
-    return meanVar;
-}
+    double stdev = std::sqrt(var);
 
 
-cv::Mat_<float> CompVis::batchNormSingleImage(const cv::Mat_<float>& src, double mean, double var)
-{
     cv::Mat_<float> dst = src.clone();
-
+    
+    
     dst -= mean;
     dst /= var;
+    //dst /= stdev; // when normalize to zero mean unit varience, image is getting too much darker. Used for this purpose
 
 #if DebugMod
-    cv::imshow("SRC", src / 256);
-    cv::imshow("DST", dst/256);
+    cv::imshow("SRC", src/256);
+    cv::imshow("DST", dst);
     cv::waitKey(0);
     std::cout << "Mean and Variance are " << mean << " " << var << std::endl;
 #endif
 
+
     return dst;
 }
 
-void CompVis::batchNormalize()
-{
-    for (int channel = 0; channel < m_batchListYusefullForm[0].size(); channel ++) {
-        long double means = 0;
-        long double sq_sum = 0;
-        long int Imgcounter = 0;
-#pragma omp parallel for num_threads(NUM_OF_THREAT)
-        for (int batch = 0; batch < m_batchListYusefullForm.size(); batch++) {
 
-            std::vector<double> tmp = singleImageMeanVariance(m_batchListYusefullForm[batch][channel]);
-            means  += tmp[0];
-            sq_sum += tmp[1];
-            Imgcounter++;
-
-        }
-
-        int numOfPixelsPerImage = (m_imgSize[1] - m_kernelSize[0]+1) * (m_imgSize[2] - m_kernelSize[1]+1);
-        double mean = means / Imgcounter;
-
-        Imgcounter *= (numOfPixelsPerImage * m_batchListYusefullForm.size());
-        double var = (sq_sum / Imgcounter - mean * mean);
-        m_means.push_back(mean);
-        m_vars.push_back(var);
-        means = 0;
-        sq_sum = 0;
-        Imgcounter = 0;
-    }
-
-
-//#pragma omp parallel for num_threads(NUM_OF_THREAT)
-    for (int batch = 0; batch < m_batchListYusefullForm.size(); batch++) {
-        std::vector<cv::Mat_<float>> normOut4SingImg;
-        for (int channel = 0; channel < m_batchListYusefullForm[0].size(); channel++) {
-            cv::Mat_<float> tmp = batchNormSingleImage(m_batchListYusefullForm[batch][channel], m_means[channel],m_vars[channel]);
-            normOut4SingImg.push_back(tmp);
-        }
-        m_batchListZusefullForm.push_back(normOut4SingImg);
-        cv::Mat tmp2(cv::Size(m_imgSize[1] - m_kernelSize[0] + 1, m_imgSize[2] - m_kernelSize[1] + 1), CV_32FC(m_kernelListW.size()));
-        cv::merge(normOut4SingImg, tmp2);
-        m_batchListZwantedForm.push_back(tmp2);
-    }
-}
-
-void CompVis::reluSingleImage(cv::Mat_<float>& src)
-{
-    for (cv::Mat_<float>::iterator PixelIter = src.begin(); PixelIter != src.end(); PixelIter++) {
-
-        *PixelIter = std::max((float)0.0, *PixelIter);
-    }
-#if DebugMod
-    cv::imshow("Output of ReLU", src);
-#endif
-}
-
-void CompVis::relu()
-{
-    m_batchListVusefullForm = m_batchListZusefullForm;
-//#pragma omp parallel for num_threads(NUM_OF_THREAT)
-    for (int batch = 0; batch < m_batchListVusefullForm.size(); batch++) {
-        std::vector<cv::Mat_<float>> reluOut4SingImg;
-
-        for (int channel = 0; channel < m_batchListVusefullForm[batch].size(); channel++) {
-            reluSingleImage(m_batchListVusefullForm[batch][channel]);
-        }
-
-        cv::Mat tmp2(cv::Size(m_imgSize[1] - m_kernelSize[0] + 1, m_imgSize[2] - m_kernelSize[1] + 1), CV_32FC(m_kernelListW.size()));
-        cv::merge(m_batchListVusefullForm[batch], tmp2);
-        m_batchListVwantedForm.emplace_back(tmp2);
-    }
-}
-
-void CompVis::visualizeOutputs()
-          {
-    for (int batch = 0; batch < m_batchListVusefullForm.size(); batch++) {
-        for (int channel = 0; channel < m_batchListVusefullForm[batch].size(); channel++) {
-
-            std::string message = "ReLu Output for Batch: " + std::to_string(batch) + " Channel: " + std::to_string(channel);
-            std::string imgName = "./outputImageDir/B" + std::to_string(batch) + "C" + std::to_string(channel) + ".jpg";
-            if (channel == 0) {
-                cv::imshow(message, m_batchListVusefullForm[batch][channel]*256);
-                cv::imwrite(imgName,m_batchListVusefullForm[batch][channel] * 256);
-            }
-            else {
-                cv::imshow(message, m_batchListVusefullForm[batch][channel]);
-                cv::imwrite(imgName,m_batchListVusefullForm[batch][channel]);
-            }
-
-            cv::waitKey(0);
-
-        }
-
-    }
-}
-
-
-
-myCv2::myCv2()
-{
-
-}
-
-
-void myCv2::readandProcessImages(std::string path)
-{
-    filename = path;
-
-
-
-}
