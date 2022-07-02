@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/ae/repo/ComputerVisionCuda/build",
+  "command": "/usr/bin/g++  -isystem /usr/local/include/opencv4 -g -o CMakeFiles/ComputerVisionCuda.dir/main.cpp.o -c /home/ae/repo/ComputerVisionCuda/main.cpp",
+  "file": "/home/ae/repo/ComputerVisionCuda/main.cpp"
+},
+{
+  "directory": "/home/ae/repo/ComputerVisionCuda/build",
+  "command": "/usr/bin/g++  -isystem /usr/local/include/opencv4 -g -o CMakeFiles/ComputerVisionCuda.dir/CompVis.cpp.o -c /home/ae/repo/ComputerVisionCuda/CompVis.cpp",
+  "file": "/home/ae/repo/ComputerVisionCuda/CompVis.cpp"
+}
+]

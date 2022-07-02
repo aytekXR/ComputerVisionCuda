@@ -7,7 +7,6 @@ CompVis::CompVis(cv::String ImgFolderPath, uint16_t imageWidth, uint16_t imageHi
 	m_imgSize.emplace_back(ImageNum);
 	m_imgSize.emplace_back(imageWidth);
 	m_imgSize.emplace_back(imageHight);
-
 }
 
 void CompVis::init()
