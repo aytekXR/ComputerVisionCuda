@@ -5,7 +5,7 @@
 #include <numeric>
 
 #define DebugMod true 
-#define NUM_OF_THREAT 12
+#define NUM_OF_THREAT 1
 
 class CompVis
 {
