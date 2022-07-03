@@ -30,7 +30,8 @@ link_directories(
 
 
 
-add_executable(${PROJECT_NAME} src/main.cpp src/CompVis.cpp)
+add_executable(${PROJECT_NAME} src/cpu/main.cpp src/cpu/CompVis.cpp)
+
 # For compilation ...
 # Specify target & source files to compile it from
 # cuda_add_executable(
