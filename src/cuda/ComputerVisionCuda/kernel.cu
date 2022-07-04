@@ -12,9 +12,11 @@
 #include <time.h>
 #include <windows.h>
 #include <chrono>
+#include <filesystem>
 
-//#define PRINT //for printing intermediate outputs to console
-#define SHOW_IMGS //for showing the final images
+//#define DEBUG //for printing intermediate outputs to console
+//#define SHOW_IMGS //for showing the final images
+#define TIMER // for timing purposes
 
 #define IM_WIDTH 512
 #define IM_HEIGHT 512
@@ -270,6 +272,7 @@ void bnormReluWithCuda(int batch_size, cudaStream_t* streams, float* dev_batch_c
 	cudaDeviceSynchronize();
 }
 
+
 int main(int argc, char** argv)
 {
 	cudaError_t cudaStatus;
@@ -278,7 +281,7 @@ int main(int argc, char** argv)
 	// Get all jpg in the folder
 	String image_path;
 	if (argc <= 1){
-		image_path = "C:/Users/aayte/Downloads/ComputerVisionCuda/results/Input_Images/*.jpg"; //change this to your image folder path
+		image_path = "C:/Users/aayte/Downloads/inputImageDir/*.jpg"; //change this to your image folder path
 		std::cerr << "Default file path is used given as:\n" << image_path << std::endl;
 
 	}
@@ -341,28 +344,49 @@ int main(int argc, char** argv)
 		gpuErrchk(cudaStreamCreate(&(streams[i]))); //Generate streams
 	}
 
-#ifdef PRINT
-	auto start_time = std::chrono::high_resolution_clock::now();
+#ifdef TIMER
+	auto start_time_0 = std::chrono::high_resolution_clock::now();
 #endif // PRINT
 
 	convolveWithCuda(batch_size, streams, dev_batch_img_float, dev_batch_conv_imgs, dev_channel_array); //Convolution kernel
+#ifdef TIMER
+	auto end_time_0 = std::chrono::high_resolution_clock::now();
+	auto time0 = end_time_0 - start_time_0;
+	std::cout <<"\n\nConvolution kernel Time is: "<< time0 / std::chrono::milliseconds(1) << "ms\n\n";
+	auto start_time_1 = std::chrono::high_resolution_clock::now();
+#endif // PRINT
 
 	calcmeanWithCuda(batch_size, streams, dev_batch_conv_imgs, dev_mean_vals); //Mean calculation kernel
+#ifdef TIMER
+	auto end_time_1 = std::chrono::high_resolution_clock::now();
+	auto time1 = end_time_1 - start_time_1;
+	//std::cout << "\n\nMean calculation kernel total time is: " << time1 / std::chrono::milliseconds(1) << "ms\n\n";
+#endif // PRINT
+
 
 	gpuErrchk(cudaMemcpy(mean_vals, dev_mean_vals, batch_size * KERNEL_COUNT * sizeof(float), cudaMemcpyDeviceToHost));
 
-#ifdef PRINT
+#ifdef DEBUG
 	for (int i = 0; i < batch_size * KERNEL_COUNT; i++)
 	{
 		cout << "Mean val for image: " << i << "  Val: " << mean_vals[i] << endl;
 	}
 #endif // PRINT
 
+#ifdef TIMER
+	auto start_time_2 = std::chrono::high_resolution_clock::now();
+#endif // PRINT
 	calcvarianceWithCuda(batch_size, streams, dev_batch_conv_imgs, dev_variance_vals, mean_vals); //Variance calculation kernel
+#ifdef TIMER
+	auto end_time_2 = std::chrono::high_resolution_clock::now();
+	auto time2 = end_time_2 - start_time_2;
+	std::cout << "\n\nMean calculation kernel and Variance calculation  kernel total time is: " << (time1+time2) / std::chrono::milliseconds(1) << "ms\n\n";
+#endif // PRINT
+
 
 	gpuErrchk(cudaMemcpy(variance_vals, dev_variance_vals, batch_size * KERNEL_COUNT * sizeof(float), cudaMemcpyDeviceToHost));
 
-#ifdef PRINT
+#ifdef DEBUG
 	for (int i = 0; i < batch_size * KERNEL_COUNT; i++)
 	{
 		cout << "Variance for image: " << i << "  Val: " << variance_vals[i] << endl;
@@ -373,18 +397,24 @@ int main(int argc, char** argv)
 	for (int i = 0; i < batch_size * KERNEL_COUNT; i++)
 	{
 		scale_normalizer[i] = ((float)SCALE) / ((float)(sqrt(variance_vals[i] + (float)EPSILON)));
-#ifdef PRINT
+#ifdef DEBUG
 		cout << "Scale normalizer for image: " << i << "  Val: " << scale_normalizer[i] << endl;
 #endif // PRINT
 	}
 
-	bnormReluWithCuda(batch_size, streams, dev_batch_conv_imgs, dev_batch_bnrelu_imgs, mean_vals, scale_normalizer); //Call Batchnorm & ReLu kernel
 
-#ifdef PRINT
-	auto end_time = std::chrono::high_resolution_clock::now();
-	auto time = end_time - start_time;
-	std::cout << time / std::chrono::milliseconds(1) << "ms\n";
+#ifdef TIMER
+	auto start_time_3 = std::chrono::high_resolution_clock::now();
 #endif // PRINT
+	bnormReluWithCuda(batch_size, streams, dev_batch_conv_imgs, dev_batch_bnrelu_imgs, mean_vals, scale_normalizer); //Call Batchnorm & ReLu kernel
+#ifdef TIMER
+	auto end_time_3 = std::chrono::high_resolution_clock::now();
+	auto time3 = end_time_3 - start_time_3;
+	auto time4 = end_time_3 - start_time_0;
+	std::cout << "\n\nBatchnorm & ReLu kernel total time is: " << time3 / std::chrono::milliseconds(1) << "ms\n\n";
+	std::cout << "\n\nOVERALL STACK TIME IS: " << time4 / std::chrono::milliseconds(1) << "ms\n\n";
+#endif // PRINT
+	
 
 	gpuErrchk(cudaMemcpy(batch_bnrelu_imgs, dev_batch_bnrelu_imgs, IM_SIZE * batch_size * KERNEL_COUNT * sizeof(float), cudaMemcpyDeviceToHost));
 
@@ -420,8 +450,16 @@ Error:
 	cudaFree(dev_variance_vals);
 	cudaFree(streams);
 
+
+
+#ifdef TIMER
+	auto end_time_4 = std::chrono::high_resolution_clock::now();
+	auto time5 = end_time_4 - start_time_0;
+	std::cout << "\n\nOVERALL STACK TIME (EXCLUDING DEVICE RESET) IS: " << time5 / std::chrono::milliseconds(1) << "ms\n\n";
+#endif // PRINT
+
 	// cudaDeviceReset must be called before exiting in order for profiling and
-	// tracing tools such as Nsight and Visual Profiler to show complete traces.
+// tracing tools such as Nsight and Visual Profiler to show complete traces.
 	gpuErrchk(cudaDeviceReset());
 
 	return 0;

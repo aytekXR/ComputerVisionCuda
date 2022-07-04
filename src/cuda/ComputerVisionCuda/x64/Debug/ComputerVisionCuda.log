@@ -1,6 +1,6 @@
 ﻿  Compiling CUDA source file kernel.cu...
   
-  C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\bin\HostX64\x64" -x cu   -IC:\Users\aayte\Documents\opencv\opencv\build\include -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static  -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\x64\Debug\kernel.cu.obj "C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu" 
+  C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7\bin\nvcc.exe" -gencode=arch=compute_52,code=\"sm_52,compute_52\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.32.31326\bin\HostX64\x64" -x cu   -IC:\Users\aayte\Documents\opencv\opencv\build\include -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.7\include"  -G   --keep-dir x64\Debug  -maxrregcount=0  --machine 64 --compile -cudart static  -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /Fdx64\Debug\vc143.pdb /FS /Zi /RTC1 /MDd " -o C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\x64\Debug\kernel.cu.obj "C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu" 
 C:\Users\aayte\Documents\opencv\opencv\build\include\opencv2/stitching/detail/warpers.hpp(235): warning #611-D: overloaded virtual function "cv::detail::PlaneWarper::buildMaps" is only partially overridden in class "cv::detail::AffineWarper"
   
 C:\Users\aayte\Documents\opencv\opencv\build\include\opencv2/stitching/detail/warpers.hpp(235): warning #611-D: overloaded virtual function "cv::detail::PlaneWarper::warp" is only partially overridden in class "cv::detail::AffineWarper"
@@ -10,9 +10,9 @@ C:\Users\aayte\Documents\opencv\opencv\build\include\opencv2/stitching/detail/bl
 C:\Users\aayte\Documents\opencv\opencv\build\include\opencv2/stitching/detail/blenders.hpp(127): warning #611-D: overloaded virtual function "cv::detail::Blender::prepare" is only partially overridden in class "cv::detail::MultiBandBlender"
   
   device_functions.h is an internal header file and must not be used directly.  This file will be removed in a future CUDA release.  Please use cuda_runtime_api.h or cuda_runtime.h instead.
-C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu(275): warning #177-D: variable "cudaStatus" was declared but never referenced
+C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu(276): warning #177-D: variable "cudaStatus" was declared but never referenced
   
-C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu(408): warning #177-D: label "Error" was declared but never referenced
+C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu(436): warning #177-D: label "Error" was declared but never referenced
   
 C:\Users\aayte\Documents\opencv\opencv\build\include\opencv2/stitching/detail/warpers.hpp(235): warning #611-D: overloaded virtual function "cv::detail::PlaneWarper::buildMaps" is only partially overridden in class "cv::detail::AffineWarper"
   
@@ -24,20 +24,20 @@ C:\Users\aayte\Documents\opencv\opencv\build\include\opencv2/stitching/detail/bl
   
   kernel.cu
   device_functions.h is an internal header file and must not be used directly.  This file will be removed in a future CUDA release.  Please use cuda_runtime_api.h or cuda_runtime.h instead.
-C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu(35): warning C4305: 'initializing': truncation from 'double' to 'const float'
-C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu(208): warning C4068: unknown pragma 'unroll'
-C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu(211): warning C4068: unknown pragma 'unroll'
-C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu(224): warning C4068: unknown pragma 'unroll'
-C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu(227): warning C4068: unknown pragma 'unroll'
-C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu(240): warning C4068: unknown pragma 'unroll'
-C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu(243): warning C4068: unknown pragma 'unroll'
-C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu(261): warning C4068: unknown pragma 'unroll'
-C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu(264): warning C4068: unknown pragma 'unroll'
-C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu(291): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu(298): warning C4244: 'argument': conversion from 'float' to 'size_t', possible loss of data
-C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu(299): warning C4244: 'argument': conversion from 'float' to 'size_t', possible loss of data
-C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu(408): warning C4102: 'Error': unreferenced label
-C:\Users\aayte\Desktop\repo\ComputerVisionCuda\ComputerVisionCuda\kernel.cu(275): warning C4101: 'cudaStatus': unreferenced local variable
-     Creating library C:\Users\aayte\Desktop\repo\ComputerVisionCuda\x64\Debug\ComputerVisionCuda.lib and object C:\Users\aayte\Desktop\repo\ComputerVisionCuda\x64\Debug\ComputerVisionCuda.exp
+C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu(36): warning C4305: 'initializing': truncation from 'double' to 'const float'
+C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu(209): warning C4068: unknown pragma 'unroll'
+C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu(212): warning C4068: unknown pragma 'unroll'
+C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu(225): warning C4068: unknown pragma 'unroll'
+C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu(228): warning C4068: unknown pragma 'unroll'
+C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu(241): warning C4068: unknown pragma 'unroll'
+C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu(244): warning C4068: unknown pragma 'unroll'
+C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu(262): warning C4068: unknown pragma 'unroll'
+C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu(265): warning C4068: unknown pragma 'unroll'
+C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu(292): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu(299): warning C4244: 'argument': conversion from 'float' to 'size_t', possible loss of data
+C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu(300): warning C4244: 'argument': conversion from 'float' to 'size_t', possible loss of data
+C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu(436): warning C4102: 'Error': unreferenced label
+C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\ComputerVisionCuda\kernel.cu(276): warning C4101: 'cudaStatus': unreferenced local variable
+     Creating library C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\x64\Debug\ComputerVisionCuda.lib and object C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\x64\Debug\ComputerVisionCuda.exp
 LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
-  ComputerVisionCuda.vcxproj -> C:\Users\aayte\Desktop\repo\ComputerVisionCuda\x64\Debug\ComputerVisionCuda.exe
+  ComputerVisionCuda.vcxproj -> C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\x64\Debug\ComputerVisionCuda.exe

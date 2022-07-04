@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\aayte\Desktop\repo\ComputerVisionCuda\x64\Release\ComputerVisionCuda.exe</FullPath>
+      <FullPath>C:\Users\aayte\Desktop\repo\ComputerVisionCuda\src\cuda\x64\Release\ComputerVisionCuda.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
