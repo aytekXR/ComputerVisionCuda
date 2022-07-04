@@ -4,8 +4,8 @@
 #include <opencv2/imgproc.hpp>
 #include <numeric>
 
-#define DebugMod true 
-#define NUM_OF_THREAT 20
+#define DebugMod false
+#define NUM_OF_THREAT 12
 
 class CompVis
 {
