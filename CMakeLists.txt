@@ -6,6 +6,7 @@ enable_testing()
 
 
 find_package(OpenCV REQUIRED)
+find_package(OpenMP)
 find_package(CUDA QUIET REQUIRED)
 
 # Pass options to NVCC
@@ -32,6 +33,8 @@ link_directories(
 
 add_executable(${PROJECT_NAME} src/cpu/main.cpp src/cpu/CompVis.cpp)
 
+
+
 # For compilation ...
 # Specify target & source files to compile it from
 # cuda_add_executable(
@@ -44,7 +47,11 @@ add_executable(${PROJECT_NAME} src/cpu/main.cpp src/cpu/CompVis.cpp)
 #     utility/wrapper.h
 #     )
 
-target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
+# if(OpenMP_CXX_FOUND)
+#     target_link_libraries(MyTarget PUBLIC OpenMP::OpenMP_CXX)
+# endif()
+
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS} OpenMP::OpenMP_CXX)
 # For linking ...
 # Specify target & libraries to link it with
 # target_link_libraries(
